@@ -12,24 +12,26 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeServiceImpl() {
         this.employees = new HashMap<>(Map.of(
                 "Станислав Лем",
-                new Employee("Станислав", "Лем"),
+                new Employee("Станислав", "Лем", 2, 35000),
                 "Борис Стругацкий",
-                new Employee("Борис", "Стругацкий"),
+                new Employee("Борис", "Стругацкий", 1, 73000),
                 "Роберт Шекли",
-                new Employee("Роберт", "Шекли"),
+                new Employee("Роберт", "Шекли",2, 119000),
                 "Стивен Кинг",
-                new Employee("Стивен", "Кинг"),
+                new Employee("Стивен", "Кинг", 4, 89000),
+                "Айзек Азимов",
+                new Employee("Айзек", "Азимов", 2, 91000),
                 "Эдгар Берроуз",
-                new Employee("Эдгар", "Берроуз")
+                new Employee("Эдгар", "Берроуз", 3, 43000)
         ));
     }
 
     @Override
-    public void addEmployee(String firstName, String lastName) {
+    public void addEmployee(String firstName, String lastName, int department, double salary) {
         if (findEmployee(firstName, lastName) != null) {
             throw new EmployeeAlreadyAddedException();
         }
-        employees.put(firstName + " " + lastName, new Employee(firstName, lastName));
+        employees.put(firstName + " " + lastName, new Employee(firstName, lastName, department, salary));
     }
 
     @Override
